@@ -7,10 +7,10 @@ type Data = {
   name: string;
 };
 
-export default async function getAll(
+export default async function create(
   req: NextApiRequest,
-  res: NextApiResponse<any>
+  res: NextApiResponse
 ) {
-  const links = await prisma.links.findMany()
-  res.status(200).json(links);
+  const links = await prisma.links.findMany();
+  return res.status(200).json(links);
 }

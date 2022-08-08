@@ -13,7 +13,7 @@ datasource db {
 model Links {
   id          String   @id @default(cuid())
   source      String   @unique
-  destination String   @unique @db.VarChar(400)
+  destination String   @db.VarChar(400)
   ownerToken  String   @unique
   createdAt   DateTime @default(now())
 }
