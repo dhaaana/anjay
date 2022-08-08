@@ -10,3 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Links {
+  id          String   @id @default(cuid())
+  source      String   @unique
+  destination String   @unique @db.VarChar(400)
+  ownerToken  String   @unique
+  createdAt   DateTime @default(now())
+}
