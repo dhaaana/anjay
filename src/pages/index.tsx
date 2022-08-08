@@ -72,7 +72,7 @@ const Home: NextPage = () => {
     <div className='flex h-screen w-screen justify-center bg-indigo-200'>
       <Toaster />
       <Helmet />
-      <div className='flex w-[40%] flex-col justify-center gap-y-3'>
+      <div className='flex w-[85%] flex-col justify-center gap-y-3 sm:w-[40%]'>
         {step === 0 && (
           <input
             className='rounded p-3 text-gray-800 shadow-md focus:outline-none focus:ring focus:ring-indigo-400/50'
@@ -88,31 +88,33 @@ const Home: NextPage = () => {
         )}
         {step === 1 && (
           <div className='space-y-2'>
-            <div className='flex items-center gap-x-2'>
+            <div className='flex flex-wrap items-center gap-2 sm:flex-nowrap'>
               <p>
                 {window.location.href.split('//').pop() || 'localhost:3000/'}
               </p>
-              <input
-                className='w-full rounded p-3 text-gray-800 shadow-md focus:outline-none focus:ring focus:ring-indigo-400/50'
-                type='text'
-                name='source'
-                placeholder='tailwind'
-                onChange={changeHandler}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') stepHandler();
-                }}
-                ref={sourceInput}
-              />
-              <button
-                onClick={() => {
-                  if (!sourceInput.current) return;
-                  sourceInput.current.value = nanoid();
-                  data.source = sourceInput.current.value;
-                }}
-                className='self-stretch rounded bg-indigo-600 px-4 font-semibold text-white transition-transform hover:-translate-y-[0.1rem] focus:outline-none focus:ring focus:ring-indigo-400/50'
-              >
-                <Dice />
-              </button>
+              <div className='flex w-full gap-x-2'>
+                <input
+                  className='w-full rounded p-3 text-gray-800 shadow-md focus:outline-none focus:ring focus:ring-indigo-400/50'
+                  type='text'
+                  name='source'
+                  placeholder='tailwind'
+                  onChange={changeHandler}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') stepHandler();
+                  }}
+                  ref={sourceInput}
+                />
+                <button
+                  onClick={() => {
+                    if (!sourceInput.current) return;
+                    sourceInput.current.value = nanoid();
+                    data.source = sourceInput.current.value;
+                  }}
+                  className='self-stretch rounded bg-indigo-600 px-4 font-semibold text-white transition-transform hover:-translate-y-[0.1rem] focus:outline-none focus:ring focus:ring-indigo-400/50'
+                >
+                  <Dice />
+                </button>
+              </div>
             </div>
           </div>
         )}
