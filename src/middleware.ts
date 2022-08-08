@@ -2,7 +2,7 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest) {
-  const baseUrl = process.env.VERCEL_URL || 'http://localhost:3000';
+  const baseUrl = req.nextUrl.origin || 'http://localhost:3000';
 
   const res = await fetch(`${baseUrl}/api/link${req.nextUrl.pathname}`);
   const data = await res.json();

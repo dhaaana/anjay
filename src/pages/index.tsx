@@ -37,6 +37,7 @@ const Home: NextPage = () => {
         destination: '',
       });
       setStep(0);
+      toast.success('Success, link copied to clipboard');
     } catch (err) {
       toast.error(`Error: ${err}`);
     } finally {
